@@ -1,5 +1,7 @@
 import { FC, useState } from "react";
-import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { Link, useParams } from "react-router-dom";
+import { RootState } from "../../redux/store";
 import Modal from "../ModalCatrgory";
 import {
   Button,
@@ -10,12 +12,10 @@ import {
   ListItem,
 } from "./categories.style";
 
-interface ICategoriesProps {
-  categoryList: string[];
-}
-
-const Categories: FC<ICategoriesProps> = ({ categoryList }) => {
+const CategoriesList: FC = () => {
   const [modalStatus, setModalStatus] = useState(false);
+
+  const categoriesList = useSelector((state: RootState) => state.cateogry);
 
   const handleClose = (flag: boolean) => {
     setModalStatus(flag);
@@ -33,10 +33,12 @@ const Categories: FC<ICategoriesProps> = ({ categoryList }) => {
       <ListContainer>
         <H1Center>categories</H1Center>
         <List>
-          {categoryList.map((category, i) => {
+          {categoriesList.map((category, i) => {
             return (
               <ListItem key={i}>
-                <LinkItemList href={`/${category}`}>{category}</LinkItemList>
+                <LinkItemList href={`/${category.name}`}>
+                  {category.name}
+                </LinkItemList>
               </ListItem>
             );
           })}
@@ -47,4 +49,4 @@ const Categories: FC<ICategoriesProps> = ({ categoryList }) => {
   );
 };
 
-export default Categories;
+export default CategoriesList;

@@ -1,6 +1,6 @@
 import { ChangeEvent, FC, FormEvent, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addTodo, setTodoStatus } from "../../redux/feature/todo/todoSlice";
+// import { addTodo, setTodoStatus } from "../../redux/feature/category/todoSlice";
 import { AppDispatch, RootState } from "../../redux/store";
 
 const TodoList: FC = () => {
@@ -14,13 +14,13 @@ const TodoList: FC = () => {
 
   const addTask = (e: FormEvent) => {
     e.preventDefault();
-    dispatch(addTodo(todoDesc));
+    // dispatch(addTodo(todoDesc));
   };
 
-  const handleCheckboxChange = (id: string, completed: boolean) => {
-    console.log("hereh", completed, id);
-    dispatch(setTodoStatus({ completed, id }));
-  };
+  // const handleCheckboxChange = (id: string, completed: boolean) => {
+  //   console.log("hereh", completed, id);
+  //   dispatch(setTodoStatus({ completed, id }));
+  // };
 
   return (
     <div>
@@ -31,7 +31,7 @@ const TodoList: FC = () => {
 
       <div>
         <ul>
-          {todoList.map((task, i) => {
+          {/* {todoList.map((task, i) => {
             return (
               <li
                 key={task.id}
@@ -49,7 +49,7 @@ const TodoList: FC = () => {
                 <span>{task.description}</span>
               </li>
             );
-          })}
+          })} */}
         </ul>
       </div>
     </div>

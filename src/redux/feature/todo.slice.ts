@@ -1,34 +1,34 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { Todo } from "./todo";
+import { ITodo } from "../../interface";
 import { v4 as uuidv4 } from "uuid";
 
-const initialState = [] as Todo[];
+const initialState = [] as ITodo[];
 
 const todoSlice = createSlice({
   name: "todos",
   initialState,
   reducers: {
     addTodo: {
-      reducer: (state: Todo[], action: PayloadAction<Todo>) => {
+      reducer: (state: ITodo[], action: PayloadAction<ITodo>) => {
         state.push(action.payload);
       },
       prepare: (description: string) => ({
         payload: {
           id: uuidv4(),
           description,
-          completed: false,
-        } as Todo,
+          done: false,
+        } as ITodo,
       }),
     },
-    removeTodo(state: Todo[], action: PayloadAction<string>) {
+    removeTodo(state: ITodo[], action: PayloadAction<string>) {
       state.filter((todo) => todo.id !== action.payload);
     },
     setTodoStatus(
-      state: Todo[],
+      state: ITodo[],
       action: PayloadAction<{ completed: boolean; id: string }>
     ) {
       const index = state.findIndex((todo) => todo.id === action.payload.id);
-      state[index].completed = action.payload.completed;
+      state[index].done = action.payload.completed;
     },
   },
 });

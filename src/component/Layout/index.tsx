@@ -1,15 +1,14 @@
-import { FC } from "react";
-import Categories from "../Categories";
+import { FC, ReactNode } from "react";
+import CategoriesList from "../CategoriesList";
 import TodoList from "../TodoList";
 import { LayoutContainer } from "./Layout.style";
 
-const Layout: FC = () => {
-  return (
-    <LayoutContainer>
-      <Categories categoryList={["xx", "ll"]} />
-      <TodoList />
-    </LayoutContainer>
-  );
+interface ILayoutProps {
+  children: ReactNode;
+}
+
+const Layout: FC<ILayoutProps> = ({ children }) => {
+  return <LayoutContainer>{children}</LayoutContainer>;
 };
 
 export default Layout;
