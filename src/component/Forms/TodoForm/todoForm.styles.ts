@@ -20,7 +20,7 @@ export const FormInput = styled.input`
 
 export const StyledButton = styled.button`
   font-size: 16px;
-  background-color: blue;
+  background-color: green;
   border: none;
   margin: 2px;
   padding: 5px 10px;

@@ -7,7 +7,7 @@ export const Form = styled.form`
 `;
 export const Button = styled.button`
   font-size: 16px;
-  background-color: blue;
+  background-color: green;
   border: none;
   border-radius: 4px;
   padding: 5px 10px;
