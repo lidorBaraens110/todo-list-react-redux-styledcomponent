@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import CategoriesList from "../../component/CategoriesList";
 import Layout from "../../component/Layout";
+import Modal from "../../component/ModalCatrgory";
 import TodoList from "../../component/Todo";
 import { removeCategory } from "../../redux/feature/category.slice";
 import { RootState } from "../../redux/store";
@@ -18,13 +19,13 @@ const HomePage: FC = () => {
         return category.name === params.name;
       })[0]
   );
-  console.log(params.name);
   const deleteCategory = () => {
     dispatch(removeCategory(currentCategory.id));
     navigate("/");
   };
   return (
     <Layout>
+      <Modal />
       <CategoriesList />
       <WrapTodoContainer>
         {params.name !== undefined ? (

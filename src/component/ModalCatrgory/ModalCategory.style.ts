@@ -5,7 +5,7 @@ interface ModalProps {
 }
 
 export const Model = styled.div<ModalProps>`
-  z-index: auto;
+  z-index: 10;
   display: ${({ show }) => (show ? "block" : "none")};
   position: fixed;
   top: 0;

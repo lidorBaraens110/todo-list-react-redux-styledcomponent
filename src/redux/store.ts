@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-// import todosReducer from "./feature/todo.slice";
 import categoryReducer from "./feature/category.slice";
 import storage from "redux-persist/lib/storage";
+import categoryModalReducer from "./feature/categoryModal.slice";
 import {
   FLUSH,
   PAUSE,
@@ -14,7 +14,7 @@ import {
 } from "redux-persist";
 
 const userReducer = combineReducers({
-  // todo: todosReducer,
+  categoryModal: categoryModalReducer,
   cateogry: categoryReducer,
 });
 
