@@ -1,8 +1,5 @@
-import { ChangeEvent, FC, FormEvent, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { ICategory, ITodo } from "../../interface";
-import { addTodo, toggleToDo } from "../../redux/feature/category.slice";
-import { AppDispatch, RootState } from "../../redux/store";
+import { FC } from "react";
+import { ITodo } from "../../interface";
 import TodoForm from "../Forms/TodoForm";
 import TodoItemInList from "../TodoItemInList";
 import { StyledUl, WrapToDo } from "./todo.style";
@@ -10,11 +7,13 @@ import { StyledUl, WrapToDo } from "./todo.style";
 interface ITodoList {
   categoryId: string;
   todos: ITodo[];
+  categoryName: string;
 }
 
-const Todo: FC<ITodoList> = ({ categoryId, todos }) => {
+const Todo: FC<ITodoList> = ({ categoryId, todos, categoryName }) => {
   return (
     <WrapToDo>
+      <h1>{categoryName}</h1>
       <TodoForm categoryId={categoryId} />
       <StyledUl>
         {todos.map((todo, i) => {

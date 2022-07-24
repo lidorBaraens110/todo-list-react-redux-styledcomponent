@@ -46,7 +46,7 @@ export const ListContainer = styled.div`
   display: flex;
   flex-direction: column;
   border-right: 2px solid black;
-  min-height: 100vh;
+  min-height: calc(100vh - 78px);
 `;
 export const H1Center = styled.h1`
   text-align: center;

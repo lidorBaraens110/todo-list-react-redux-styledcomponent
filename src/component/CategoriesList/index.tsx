@@ -1,9 +1,8 @@
-import { FC, useState } from "react";
+import { FC } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { toggleModal } from "../../redux/feature/categoryModal.slice";
 import { RootState } from "../../redux/store";
-import Modal from "../ModalCatrgory";
 import {
   Button,
   H1Center,
@@ -14,11 +13,8 @@ import {
 } from "./categories.style";
 
 const CategoriesList: FC = () => {
-  // const [modalStatus, setModalStatus] = useState(false);
-
   const params = useParams();
   const dispatch = useDispatch();
-  // const show= useSelector((state:RootState)=>state.categoryModal)
   const categoriesList = useSelector((state: RootState) => state.cateogry);
 
   const handleClose = (flag: boolean) => {
@@ -31,10 +27,10 @@ const CategoriesList: FC = () => {
       <List>
         {categoriesList.map((category, i) => {
           return (
-            <ListItem key={i} isActive={params.name === category.name}>
+            <ListItem key={i} isActive={params.id === category.id}>
               <LinkItemList
-                href={`/${category.name}`}
-                isActive={params.name === category.name}
+                href={`/${category.id}`}
+                isActive={params.id === category.id}
               >
                 {category.name}
               </LinkItemList>

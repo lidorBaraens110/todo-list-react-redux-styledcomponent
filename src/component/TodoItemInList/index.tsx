@@ -20,7 +20,12 @@ const TodoItemInList: FC<{ categoryId: string } & ITodo> = ({
   return (
     <StyledList>
       <StyledLabel htmlFor={id} textDecoration={done ? 1 : 0}>
-        <input type="checkbox" id={id} onChange={handleCheckboxChange} />
+        <input
+          type="checkbox"
+          id={id}
+          checked={done}
+          onChange={handleCheckboxChange}
+        />
         {description}
       </StyledLabel>
       <StyledButton type="button" onClick={deleteItem}>

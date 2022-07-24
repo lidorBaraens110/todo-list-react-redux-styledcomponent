@@ -1,9 +1,6 @@
 import { FC } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "../component/Layout";
 import HomePage from "../pages/HomePage";
-import Category from "../pages/HomePage";
-
 import NotFound from "../pages/NotFound";
 
 const MainRoute: FC = () => {
@@ -12,7 +9,7 @@ const MainRoute: FC = () => {
       <Routes>
         <Route path="*" element={<NotFound />} />
         <Route path="/" element={<HomePage />} />
-        <Route path=":name" element={<HomePage />} />
+        <Route path=":id" element={<HomePage />} />
       </Routes>
     </BrowserRouter>
   );

@@ -4,21 +4,29 @@ import { useNavigate, useParams } from "react-router-dom";
 import CategoriesList from "../../component/CategoriesList";
 import Layout from "../../component/Layout";
 import Modal from "../../component/ModalCatrgory";
-import TodoList from "../../component/Todo";
+import Todo from "../../component/Todo";
 import { removeCategory } from "../../redux/feature/category.slice";
 import { RootState } from "../../redux/store";
-import { ButtonDelete, WrapTodoContainer } from "./home.style";
+import {
+  AnimationDash,
+  ButtonDelete,
+  H1HomePage,
+  H1Layout,
+  WrapTodoContainer,
+} from "./home.style";
 
 const HomePage: FC = () => {
-  let params = useParams();
+  const params = useParams();
+  console.log(params.id);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const currentCategory = useSelector(
     (state: RootState) =>
       state.cateogry.filter((category) => {
-        return category.name === params.name;
+        return category.id === params.id;
       })[0]
   );
+
   const deleteCategory = () => {
     dispatch(removeCategory(currentCategory.id));
     navigate("/");
@@ -27,12 +35,14 @@ const HomePage: FC = () => {
     <Layout>
       <Modal />
       <CategoriesList />
+
       <WrapTodoContainer>
-        {params.name !== undefined ? (
+        {params.id !== undefined ? (
           currentCategory ? (
             <>
-              <h1> {params.name}</h1>
-              <TodoList
+              <H1HomePage> {params.name}</H1HomePage>
+              <Todo
+                categoryName={currentCategory.name}
                 categoryId={currentCategory.id}
                 todos={currentCategory.todos}
               />
@@ -41,16 +51,34 @@ const HomePage: FC = () => {
               </ButtonDelete>
             </>
           ) : (
-            <div>
-              this route not exist please choose of your own category or add a
-              new one
-            </div>
+            <>
+              <h1>Hello,</h1>
+              <p>
+                this route not exist please choose of your own category or add a
+                new one
+              </p>
+              <AnimationDash>
+                <span>{"<"}</span>
+                <span>-</span>
+                <span>-</span>
+                <span>-</span>
+              </AnimationDash>
+            </>
           )
         ) : (
-          <h1>
-            hello my freind please choose one of your category or create new one
-            to get started
-          </h1>
+          <>
+            <h1>Hello User,</h1>
+            <p>
+              Please Choose One Of Your Category Or Create New One To Get
+              Started
+            </p>
+            <AnimationDash>
+              <span>{"<"}</span>
+              <span>-</span>
+              <span>-</span>
+              <span>-</span>
+            </AnimationDash>
+          </>
         )}
       </WrapTodoContainer>
     </Layout>

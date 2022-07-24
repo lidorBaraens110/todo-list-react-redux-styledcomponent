@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, FormEvent, useState } from "react";
+import { ChangeEvent, FC, FormEvent, useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTodo } from "../../../redux/feature/category.slice";
 import { AppDispatch } from "../../../redux/store";
@@ -15,13 +15,22 @@ const TodoForm: FC<ITodoForm> = ({ categoryId }) => {
     setTotoDesc(e.target.value);
   };
 
+  const inputRef = useRef<HTMLInputElement | null>(null);
+  useEffect(() => {
+    if (inputRef && inputRef.current) {
+      inputRef.current.focus();
+    }
+  });
+
   const addTask = (e: FormEvent) => {
     e.preventDefault();
     dispatch(addTodo(todoDesc, categoryId));
+    setTotoDesc("");
   };
   return (
     <StyledForm onSubmit={addTask}>
       <FormInput
+        ref={inputRef}
         placeholder="Enter new todo"
         required
         type="text"

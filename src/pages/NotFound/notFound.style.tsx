@@ -6,7 +6,6 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   background-color: #f1f1f1;
 `;
 
@@ -18,5 +17,3 @@ export const H1 = styled.h1`
 export const P = styled.p`
   font-size: 24px;
 `;
-
-// export default link=styled.a

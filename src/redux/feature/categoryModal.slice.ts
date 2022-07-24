@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ITodo } from "../../interface";
 
 const initialState = false;
 

@@ -1,5 +1,11 @@
 import styled from "styled-components";
 
+export const StyledForm = styled.form`
+  margin-top: 35px;
+  display: flex;
+  border: 1px solid #d3d3d3;
+`;
+
 export const FormInput = styled.input`
   width: 235px;
   outline: none;
@@ -10,11 +16,6 @@ export const FormInput = styled.input`
   padding-left: 10px;
   display: flex;
   align-items: center;
-`;
-
-export const StyledForm = styled.form`
-  display: flex;
-  border: 1px solid #d3d3d3;
 `;
 
 export const StyledButton = styled.button`

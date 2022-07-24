@@ -22,22 +22,13 @@ const categorySlice = createSlice({
   name: "categories",
   initialState,
   reducers: {
-    createCategory: {
-      reducer: (state: ICategory[], action: PayloadAction<ICategory>) => {
-        const exist = state.findIndex(
-          (category) => category.name === action.payload.name
-        );
-        if (exist === -1) {
-          state.push(action.payload);
-        }
-      },
-      prepare: (name: string) => ({
-        payload: {
-          id: uuidv4(),
-          name,
-          todos: [],
-        },
-      }),
+    createCategory: (state: ICategory[], action: PayloadAction<ICategory>) => {
+      const exist = state.findIndex(
+        (category) => category.name === action.payload.name
+      );
+      if (exist === -1) {
+        state.push(action.payload);
+      }
     },
     addTodo: {
       reducer: (state: ICategory[], action: PayloadAction<IAddTodo>) => {
