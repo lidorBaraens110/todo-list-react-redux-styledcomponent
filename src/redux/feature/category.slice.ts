@@ -41,8 +41,10 @@ const categorySlice = createSlice({
     },
     addTodo: {
       reducer: (state: ICategory[], action: PayloadAction<IAddTodo>) => {
-        state = state.map((category) => {
+        console.log("hello add todo from slice", action);
+        return state.map((category) => {
           if (category.id === action.payload.categoryId) {
+            console.log("we are in the category");
             return {
               ...category,
               todos: [...category.todos, action.payload.todo],
@@ -63,7 +65,7 @@ const categorySlice = createSlice({
       }),
     },
     toggleToDo(state: ICategory[], action: PayloadAction<IToggleTodo>) {
-      state = state.map((category) => {
+      return state.map((category) => {
         if (category.id === action.payload.categoryId) {
           return {
             ...category,
@@ -94,6 +96,11 @@ const categorySlice = createSlice({
   },
 });
 
-export const { addTodo, removeTodo, createCategory, removeCategory } =
-  categorySlice.actions;
+export const {
+  addTodo,
+  removeTodo,
+  createCategory,
+  removeCategory,
+  toggleToDo,
+} = categorySlice.actions;
 export default categorySlice.reducer;

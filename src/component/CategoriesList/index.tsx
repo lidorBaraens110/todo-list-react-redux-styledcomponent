@@ -23,13 +23,7 @@ const CategoriesList: FC = () => {
 
   return (
     <>
-      <Modal
-        handleClose={handleClose}
-        show={modalStatus}
-        headerText={""}
-        detailText={""}
-        openPos={0}
-      />
+      <Modal handleClose={handleClose} show={modalStatus} />
       <ListContainer>
         <H1Center>categories</H1Center>
         <List>

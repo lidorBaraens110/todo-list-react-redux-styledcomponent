@@ -3,8 +3,10 @@ import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import CategoriesList from "../../component/CategoriesList";
 import Layout from "../../component/Layout";
+import TodoList from "../../component/Todo";
 import { ICategory } from "../../interface";
 import { RootState } from "../../redux/store";
+import { WrapTodoContainer } from "./home.style";
 
 const HomePage: FC = () => {
   let params = useParams();
@@ -19,19 +21,22 @@ const HomePage: FC = () => {
   return (
     <Layout>
       <CategoriesList />
-      {currentCategory ? (
-        <div>
-          id: {currentCategory.id} name: {currentCategory.name}
-          {/* </div>
-      <div> */}
-          hello category this is your category name : <h1> {params.name}</h1>
-        </div>
-      ) : (
-        <div>
-          this route not exist please choose of your own category or add a new
-          one
-        </div>
-      )}
+      <WrapTodoContainer>
+        {currentCategory ? (
+          <>
+            <h1> {params.name}</h1>
+            <TodoList
+              categoryId={currentCategory.id}
+              todos={currentCategory.todos}
+            />
+          </>
+        ) : (
+          <div>
+            this route not exist please choose of your own category or add a new
+            one
+          </div>
+        )}
+      </WrapTodoContainer>
     </Layout>
   );
 };

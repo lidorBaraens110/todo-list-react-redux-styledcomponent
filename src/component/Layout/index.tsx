@@ -1,6 +1,6 @@
 import { FC, ReactNode } from "react";
 import CategoriesList from "../CategoriesList";
-import TodoList from "../TodoList";
+import TodoList from "../Todo";
 import { LayoutContainer } from "./Layout.style";
 
 interface ILayoutProps {
