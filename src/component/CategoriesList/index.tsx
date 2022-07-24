@@ -14,7 +14,7 @@ import {
 
 const CategoriesList: FC = () => {
   const [modalStatus, setModalStatus] = useState(false);
-
+  const params = useParams();
   const categoriesList = useSelector((state: RootState) => state.cateogry);
 
   const handleClose = (flag: boolean) => {
@@ -29,8 +29,11 @@ const CategoriesList: FC = () => {
         <List>
           {categoriesList.map((category, i) => {
             return (
-              <ListItem key={i}>
-                <LinkItemList href={`/${category.name}`}>
+              <ListItem key={i} isActive={params.name === category.name}>
+                <LinkItemList
+                  href={`/${category.name}`}
+                  isActive={params.name === category.name}
+                >
                   {category.name}
                 </LinkItemList>
               </ListItem>

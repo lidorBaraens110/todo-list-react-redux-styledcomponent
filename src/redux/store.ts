@@ -1,23 +1,37 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import todosReducer from "./feature/todo.slice";
+// import todosReducer from "./feature/todo.slice";
 import categoryReducer from "./feature/category.slice";
 import storage from "redux-persist/lib/storage";
-import { persistReducer, persistStore } from "redux-persist";
+import {
+  FLUSH,
+  PAUSE,
+  PERSIST,
+  persistReducer,
+  persistStore,
+  PURGE,
+  REGISTER,
+  REHYDRATE,
+} from "redux-persist";
 
 const userReducer = combineReducers({
-  todo: todosReducer,
+  // todo: todosReducer,
   cateogry: categoryReducer,
 });
 
 const persistConfig = {
   key: "root",
-
   storage,
 };
 const persistedReducer = persistReducer(persistConfig, userReducer);
 export const store = configureStore({
   reducer: persistedReducer,
   devTools: true,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+      },
+    }),
 });
 
 export type AppDispatch = typeof store.dispatch;

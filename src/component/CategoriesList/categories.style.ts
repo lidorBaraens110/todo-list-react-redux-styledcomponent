@@ -1,5 +1,13 @@
 import styled from "styled-components";
 
+interface LiProps {
+  isActive: boolean;
+}
+
+interface AProps {
+  isActive: boolean;
+}
+
 export const List = styled.ul`
   display: flex;
   flex-direction: column;
@@ -8,25 +16,29 @@ export const List = styled.ul`
   border-top: 1px solid black;
 `;
 
-export const ListItem = styled.li`
+export const ListItem = styled.li<LiProps>`
   text-align: center;
   padding: 10px;
   list-style-type: none;
   font-size: 24px;
   border-bottom: 1px solid black;
+  background-color: ${(props) => (props.isActive ? "blue" : "transparent")};
 `;
 
 export const Button = styled.button`
   border: none;
   padding: 10px;
-  color: blue;
-  border-bottom: 1px solid black;
+  color: green;
+  border-bottom: 1px solid green;
+  border-top: 1px solid green;
+  background-color: transparent;
   width: 100%;
   font-size: 24px;
   cursor: pointer;
+  margin-top: 60px;
   &:hover {
     color: white;
-    background-color: blue;
+    background-color: green;
   }
 `;
 
@@ -40,12 +52,12 @@ export const H1Center = styled.h1`
   text-align: center;
 `;
 
-export const LinkItemList = styled.a`
+export const LinkItemList = styled.a<AProps>`
   text-decoration: none;
   width: 100%;
   display: block;
-  color: black;
+  color: ${(props) => (props.isActive ? "white" : "black")};
   &:hover {
-    color: blue;
+    color: ${(props) => (props.isActive ? "white" : "blue")};
   }
 `;

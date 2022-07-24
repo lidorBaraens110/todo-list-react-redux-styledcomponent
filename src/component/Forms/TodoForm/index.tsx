@@ -2,6 +2,7 @@ import { ChangeEvent, FC, FormEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addTodo } from "../../../redux/feature/category.slice";
 import { AppDispatch } from "../../../redux/store";
+import { FormInput, StyledButton, StyledForm } from "./todoForm.styles";
 
 interface ITodoForm {
   categoryId: string;
@@ -19,10 +20,16 @@ const TodoForm: FC<ITodoForm> = ({ categoryId }) => {
     dispatch(addTodo(todoDesc, categoryId));
   };
   return (
-    <form onSubmit={addTask}>
-      <input type="text" onChange={handleChange} value={todoDesc} />
-      <button type="submit">add</button>
-    </form>
+    <StyledForm onSubmit={addTask}>
+      <FormInput
+        placeholder="Enter new todo"
+        required
+        type="text"
+        onChange={handleChange}
+        value={todoDesc}
+      />
+      <StyledButton type="submit">add</StyledButton>
+    </StyledForm>
   );
 };
 

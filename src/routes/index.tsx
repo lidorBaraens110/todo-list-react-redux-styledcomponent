@@ -11,7 +11,7 @@ const MainRoute: FC = () => {
     <BrowserRouter>
       <Routes>
         <Route path="*" element={<NotFound />} />
-        <Route index element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />
         <Route path=":name" element={<HomePage />} />
       </Routes>
     </BrowserRouter>
