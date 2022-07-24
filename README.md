@@ -1,8 +1,12 @@
 hello
 
-to run this project
-npm i
-npm run dev
+clone this project,
+https://github.com/lidorBaraens110/todo-list-react-redux-styledcomponent.git
+cd to the project.
+
+to run this project:
+RUN npm i
+RUN npm run dev
 
 project options
 
@@ -14,7 +18,7 @@ and then it link you to this category page.
 in this page you can add todos make them done or delete them
 also you can delete this category permanently.
 
-you can navigate between categoris and all the data still be available for thaks to redux-persist.
+you can navigate between categoris and all the data still be available thaks to redux-persist.
 
 i hope you enjoy
 L.B
